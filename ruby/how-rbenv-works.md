@@ -41,7 +41,7 @@ shim의 위키피디아의 정의는 다음과 같다.
 > In computer programming, a shim is a small library that transparently intercepts API calls and changes the arguments passed, handles the operation itself, or redirects the operation elsewhere.
 
 rbenv는 `~/.rbenv/shims` 디렉토리가 존재하며, 환경변수 `PATH`의 제일 앞에 이 경로를 추가함으로써 터미널에서 실행되는 명령어가 rbenv의 관리하에 있는 ruby 명령어일 경우 rbenv가 intercept 할 수 있도록 한다.
-따라서 `ruby -v` 명령어를 실행하게 되면, `~/.rbenv/shims` 디렉토리에서 shim script인 ruby를 찾고, 실행하게 된다.
+따라서 `ruby -v` 명령어를 실행하게 되면, `~/.rbenv/shims` 디렉토리에서 shim script인 `ruby`를 찾고, 실행하게 된다.
 
 `~/.rbenv/shims` 디렉토리에 있는 실행 파일들의 내용을 보면 모두가 아래와 같은 동일한 쉘 스크립트 코드를 가지고 있다. `~/.rbenv/shims/rails`든 `~/.rbenv/shims/bundler`든 모두 같은 코드를 가지고 있다.
 
@@ -80,9 +80,7 @@ shim 파일 자체로는 많은 일을 하지 않는다. 환경 변수 `RBENV_DI
 
 `rbenv exec rails s`를 실행하게 되면 다음과 같은 과정을 거쳐 실행된다.
 
-1. 어떤 버전의 ruby를 사용할 지 찾는다. `rbenv version-name` 명령어를 입력하면 현재 위치에서 사용하게 되는 ruby 버전을 보여주는데 이 버전을 사용한다.
-
-[rbenv가 ruby 버전을 찾는 순서](/ruby/detecting-ruby-version-in-rbenv.md)
+1. 어떤 버전의 ruby를 사용할 지 찾는다. `rbenv version-name` 명령어를 입력하면 현재 위치에서 사용하게 되는 ruby 버전을 보여주는데 이 버전을 사용한다. ([rbenv가 ruby 버전을 찾는 순서](/ruby/detecting-ruby-version-in-rbenv.md))
 
 ```
 RBENV_VERSION=2.4.1
