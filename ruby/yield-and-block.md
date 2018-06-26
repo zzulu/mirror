@@ -50,11 +50,11 @@ ruby는 어떠한 object라도 method로 넘겨줄 수 있고, method는 이 obj
 `&`가 붙은 parameter가 이미 Proc object라면, 그냥 method의 block으로 사용된다.
 
 ```ruby
-def greeting
+def hello
   yield if block_given?
 end
  
-hello = -> { puts "hello" }
+hello = Proc.new { puts "hello" }
  
 hello(&hello)
 ```
@@ -66,13 +66,13 @@ hello
 그러나 만약에 parameter가 Proc object가 아니라면, `#to_proc`을 호출해서 Proc으로 변환하고 method의 block으로 사용한다.
 
 ```ruby
-def greeting
+def hello
   yield if block_given?
 end
  
 class Hello
   def to_proc
-    -> {puts 'converted hello'}
+    Proc.new {puts 'converted hello'}
   end
 end
  
@@ -89,12 +89,12 @@ converted hello
 method에서 `&block`을 parameter로 받으면 method가 local variable 대신 block을 참조한다. (variable 이름이 block인거지 다른 걸 사용해도 상관 없다.)
 
 ```ruby
-def greeting(&block)
+def hello(&block)
   puts block
   block.call
 end
 
-greeting { puts "Hello!" }
+hello { puts "Hello!" }
 ```
 
 ```
@@ -110,12 +110,12 @@ Hello!
 `yield`의 return 값은 `block`안에서 마지막으로 평가된 표현식(last evaluated expression)이다.
 
 ```ruby
-def greeting
+def hello
   name = yield
   puts "Hello, #{name}"
 end
 
-greeting do
+hello do
   'zzulu'
 end
 ```
