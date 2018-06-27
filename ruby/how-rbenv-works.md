@@ -36,7 +36,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ## shims
 
-shim의 위키피디아의 정의는 다음과 같다.
+shim에 대한 위키피디아의 정의는 다음과 같다.
 
 > In computer programming, a shim is a small library that transparently intercepts API calls and changes the arguments passed, handles the operation itself, or redirects the operation elsewhere.
 
@@ -72,11 +72,10 @@ exec "/usr/local/Cellar/rbenv/1.1.1/libexec/rbenv" exec "$program" "$@"
 shim 파일 자체로는 많은 일을 하지 않는다. 환경 변수 `RBENV_DIR`와 `RBENV_ROOT`를 설정하고, `/usr/local/Cellar/rbenv/1.0.0/libexec/rbenv exec [original-command] [original-args]` 명령어를 실행한다. 
 따라서 `rails s`를 명령어를 입력하면 `~/.rbenv/shims/rails`가 실행이 되는 것이고, 실제로는 `rbenv exec rails s`가 실행되는 것이다.
 
+
 ## rbenv exec
 
-문서에는 다음과 같이 설명되어 있다.
-
-> Runs an executable by first preparing PATH so that the selected Ruby version's 'bin' directory is at the front.
+`rbenv exec`는 현재 사용중인 ruby 버전의 bin 디렉토리가 제일 앞에 오도록 환경 변수 `PATH`를 설정하여 script 파일을 실행하도록 한다.
 
 `rbenv exec rails s`를 실행하게 되면 다음과 같은 과정을 거쳐 실행된다.
 
@@ -93,6 +92,11 @@ RBENV_COMMAND=rails
 ```
 
 3. `rbenv which` 명령어 실행하여 실행될 명령어가 있는 path를 찾는다. `rbenv which rails` 명령어를 입력하면 path를 보여주는데 이 path를 사용한다.
+
+```sh
+$ rbenv which rails
+/Users/zzulu/.rbenv/versions/2.4.1/bin/rails
+```
 
 ```
 RBENV_COMMAND_PATH=/Users/zzulu/.rbenv/versions/2.4.1/bin/rails
