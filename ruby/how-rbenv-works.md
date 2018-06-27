@@ -45,7 +45,7 @@ rbenv는 `~/.rbenv/shims` 디렉토리가 존재하며, 환경변수 `PATH`의 �
 
 `~/.rbenv/shims` 디렉토리에 있는 실행 파일들의 내용을 보면 모두가 아래와 같은 동일한 쉘 스크립트 코드를 가지고 있다. `~/.rbenv/shims/rails`든 `~/.rbenv/shims/bundler`든 모두 같은 코드를 가지고 있다.
 
-```ruby
+```sh
 #!/usr/bin/env bash
 set -e
 [ -n "$RBENV_DEBUG" ] && set -x
@@ -102,7 +102,7 @@ $ rbenv which rails
 RBENV_COMMAND_PATH=/Users/zzulu/.rbenv/versions/2.4.1/bin/rails
 ```
 
-4. `RBENV_COMMAND_PATH`로부터 `RBENV_BIN_PATH`를 생성하여 환경 변수 `$PATH`의 앞에 붙인다.
+4. `RBENV_COMMAND_PATH`로부터 `RBENV_BIN_PATH`를 생성하여 환경 변수 `PATH`의 앞에 붙인다.
 
 ```
 RBENV_BIN_PATH=/Users/shot/.rbenv/versions/2.4.1/bin
