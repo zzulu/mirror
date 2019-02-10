@@ -1,3 +1,3 @@
-# zzulu Mirror
+# Mirror
 
-Keep what I remember
+Replica of zzulu.
